@@ -44,22 +44,10 @@ export class UpdatestudentComponent implements OnInit {
       username:''
 
     };
-    this.updateform = this.fb.group({
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      mobileno: ['', Validators.required],
-      email: ['', Validators.required],
-      username: ['', Validators.required]
-    });
 
-    patchForm(stu) {
-      this.updateform.get('firstname').setValue(stu.firstname);
-      this.updateform.get('lastname').setValue(stu.lastname);
-      this.updateform.get('mobileno').setValue(stu.mobileno);
-      this.updateform.get('email').setValue(stu.email);
-      this.updateform.get('username').setValue(stu.username);
 
-    }
+
+
     this.http.post('http://localhost:3000/student/showone', data).subscribe((res: any) => {
       this.student.firstname=res.student.firstname;
       this.student.lastname=res.student.lastname;
@@ -83,6 +71,20 @@ export class UpdatestudentComponent implements OnInit {
 
     });
 
+    this.updateform = this.fb.group({
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      mobileno: ['', Validators.required],
+      email: ['', Validators.required],
+      username: ['', Validators.required]
+    });
+  }
+  patchForm(stu) {
+    this.updateform.get('firstname').setValue(stu.firstname);
+    this.updateform.get('lastname').setValue(stu.lastname);
+    this.updateform.get('mobileno').setValue(stu.mobileno);
+    this.updateform.get('email').setValue(stu.email);
+    this.updateform.get('username').setValue(stu.username);
 
   }
   update(){
