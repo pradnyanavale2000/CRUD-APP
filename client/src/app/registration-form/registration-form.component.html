@@ -1,12 +1,24 @@
-<h1>Registration Form</h1>
-<form [formGroup]="registrationform">
-    Enter FirstName: <input formControlName="firstname" type="text"><br>
-    Enter LastName: <input formControlName="lastname" type="text"><br>
-    Enter Mobile no: <input formControlName="mobileno" type="text"><br>
-    Enter Email: <input formControlName="email" type="text"><br>
-    Enter Username: <input formControlName="username" type="text"><br>
-    Enter password: <input formControlName= "password" type="text"><br>
-    Enter Confirm passWord: <input formControlName= "confirmpassword" type="text"><br>
-    <button (click)="register()">Register</button>
-  </form><br>
-  Already have an account?<a href="#" [routerLink]="['/login']"> Login here..</a>
+  <html>
+  <head>
+    <title>Registration form</title>
+    <link rel="stylesheet" herf="home-page.component.css">
+  </head>
+  <body>
+    <div class="login-page">
+      <div class="form">
+        <h1>Registration Form</h1>
+        <form [formGroup]="registrationform">
+            <h4> FirstName:</h4> <input formControlName="firstname" type="text"><br>
+            <h4>Enter LastName:</h4> <input formControlName="lastname" type="text"><br>
+            <h4>Enter Mobile no:</h4> <input formControlName="mobileno" type="text"><br>
+            <h4>Enter Email:</h4> <input formControlName="email" type="text"><br>
+            <h4>Enter Username:</h4> <input formControlName="username" type="text"><br>
+            <h4>Enter password:</h4> <input formControlName= "password" type="text"><br>
+            <h4>Enter Confirm passWord:</h4> <input formControlName= "confirmpassword" type="text"><br>
+            <button (click)="register()" [disabled]="!registrationform.valid">Register</button>
+          </form><br>
+          Already have an account?<a href="#" [routerLink]="['/login']"><div class ="color"> <h5>Login here..</h5></div></a>
+      </div>
+    </div>
+  </body>
+</html>

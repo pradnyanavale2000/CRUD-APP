@@ -1,9 +1,22 @@
-<h1>Login Page</h1>
-<form [formGroup]="loginForm">
-  Enter User Name: <input formControlName="username" type="text"><br>
-  Enter passWord: <input formControlName= "password" type="text"><br>
-  <button (click)="login()">Login</button>
-</form><br>
-<a href="#" [routerLink]="['/forgetpassword']">Forget Password ?</a>
-<br><br>
-Don't have an account? <a href="#" [routerLink]="['/registration']">Register here..</a><br>
+<html>
+  <head>
+    <title>Login form</title>
+    <link rel="stylesheet" herf="home-page.component.css">
+  </head>
+  <body>
+    <div class="login-page">
+      <div class="form">
+        <h1>Login Form</h1>
+        <form [formGroup]="loginForm">
+          <h6>Enter User Name:</h6> <input formControlName="username" type="text"><br>
+          <h6>Enter passWord:</h6> <input formControlName= "password" type="password"><br>
+          <button (click)="login()">Login</button>
+        </form><br>
+        <a href="#" [routerLink]="['/forgetpassword']">Forget Password ?</a>
+        <br><br>
+        Don't have an account? <a href="#" [routerLink]="['/registration']">Register here..</a><br>
+
+      </div>
+    </div>
+  </body>
+</html>

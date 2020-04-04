@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <a href="#" [routerLink]="['/student']"><button class="add">Add Student</button></a>
+</div>
+<br>
+<table style="width:100%" id="t01">
+  <tr >
+    <th colspan="2">First Name</th>
+    <th colspan="2">Last Name</th>
+    <th colspan="2">Mobile No</th>
+    <th colspan="2">Email</th>
+    <th colspan="2">UserName</th>
+    <th colspan="2">update</th>
+    <th colspan="2">delete</th>
+  </tr>
+</table>
+<div *ngFor="let item of students">
+<table style="width:100%"  cellspacing="10">
+  <tr>
+
+    <td colspan="2">{{item.firstname}}</td>
+    <td colspan="2">{{item.lastname}}</td>
+    <td colspan="2">{{item.mobileno}}</td>
+    <td colspan="2">{{item.email}}</td>
+    <td colspan="2">{{item.username}}</td>
+    <td colspan="2"><button class="green" (click)="update(item._id)">update</button></td>
+    <td colspan="2"><button class="red" (click)="delete(item._id)">delete</button></td>
+
+  </tr>
+
+</table>
+</div>
+
+

@@ -1,0 +1,23 @@
+ <html>
+  <head>
+    <title>Registration form</title>
+    <link rel="stylesheet" herf="home-page.component.css">
+  </head>
+  <body>
+    <div class="login-page">
+      <div class="form">
+        <h1>Registration Form for student</h1>
+        <form [formGroup]="registrationformstudent">
+              Enter FirstName: <input formControlName="firstname" type="text"><br>
+              Enter LastName: <input formControlName="lastname" type="text"><br>
+              Enter Mobile no: <input formControlName="mobileno" type="text"><br>
+              Enter Email: <input formControlName="email" type="text"><br>
+              Enter Username: <input formControlName="username" type="text"><br>
+
+        </form>
+        </div>
+        <a href="#" [routerLink]="['/homepage']"><button class="cancelbtn">Cancle</button></a><button class="signupbtn" (click)="register()" [disabled]="!registrationformstudent.valid" >Register</button>
+
+      </div>
+    </body>
+  </html>

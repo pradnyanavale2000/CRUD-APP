@@ -1,20 +1,19 @@
 body{
-  background-image: url(registrationimg.jpg);
+  background-image: url();
   height: 250vh;
   background-size: cover;
   background-position: center;
 }
 .login-page{
   width: 700px;
-  padding: 10% 0 0;
+  padding: 5% 0 0;
   margin: auto;
 }
 .form{
   position: relative;
   z-index: 1;
-  background: rgba(78, 91, 163, 0.8);
+  background: rgba(226, 196, 220, 0.8);
   max-width: 700px;
-  margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
 }
@@ -22,6 +21,37 @@ body{
   text-decoration: darkgoldenrod;
 }
 
+.button{
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+button:hover{
+  opacity: 1;
+}
+
+.cancelbtn{
+  padding: 14px 20px;
+  background-color: #e0574d;
+}
+.signupbtn{
+  padding: 14px 20px;
+  background-color: rgb(70, 204, 70);
+}
+.cancelbtn, .signupbtn{
+  float: left;
+  width: 50%;
+}
+.clearfix::after{
+  content: "";
+  clear: both;
+  display: table;
+}
 .form input{
   font-family:"Roboto", sans-serif;
   outline: 1;

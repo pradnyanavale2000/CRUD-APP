@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { StudentRegistrationComponent } from './student-registration/student-registration.component';
+import { UpdatestudentComponent } from './updatestudent/updatestudent.component';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     AppComponent,
     LoginFormComponent,
     RegistrationFormComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    HomePageComponent,
+    StudentRegistrationComponent,
+    UpdatestudentComponent
   ],
   imports: [
     BrowserModule,
