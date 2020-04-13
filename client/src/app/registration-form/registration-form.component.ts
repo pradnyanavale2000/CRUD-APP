@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-registration-form',
@@ -13,7 +14,8 @@ export class RegistrationFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private authServive: AuthService
   ) { }
 
   ngOnInit() {
@@ -39,8 +41,8 @@ export class RegistrationFormComponent implements OnInit {
     };
     console.log('data', data);
 
-    this.http.post('http://localhost:3000/user/signup', data).subscribe((response: any) => {
-
+    this.authServive.register(data).subscribe((response: any) => {
+      localStorage.setItem('token', response.token);
       console.log(response);
       alert(response.msg);
 

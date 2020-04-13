@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-student-registration',
@@ -12,7 +13,9 @@ export class StudentRegistrationComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private studentServive: StudentService
+
   ) { }
 
   ngOnInit() {
@@ -35,7 +38,7 @@ export class StudentRegistrationComponent implements OnInit {
     };
     console.log('data', data);
 
-    this.http.post('http://localhost:3000/student/signup', data).subscribe((response: any) => {
+    this.studentServive.signup(data).subscribe((response: any) => {
 
       console.log(response);
       alert(response.msg);

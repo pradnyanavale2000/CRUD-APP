@@ -6,6 +6,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { HomePageComponent } from './home-page/home-page.component';
 import { StudentRegistrationComponent } from './student-registration/student-registration.component';
 import { UpdatestudentComponent } from './updatestudent/updatestudent.component';
+import { AuthgGuard } from './authg.guard';
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginFormComponent},
   { path: 'registration', component: RegistrationFormComponent},
   { path: 'forgetpassword', component: ForgetPasswordComponent},
-  { path: 'homepage', component: HomePageComponent},
+  { path: 'homepage', component: HomePageComponent, canActivate: [AuthgGuard]},
   { path: 'student', component: StudentRegistrationComponent},
   { path: 'update/:id', component: UpdatestudentComponent}
 ];

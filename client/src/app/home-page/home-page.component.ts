@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router';
+import { StudentService } from '../student.service';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -10,11 +11,12 @@ export class HomePageComponent implements OnInit {
   students=[];
   constructor(
     private http: HttpClient,
-    private route:Router
+    private route:Router,
+    private studentServive: StudentService
   ) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/student/show').subscribe((res: any) => {
+    this.studentServive.show().subscribe((res: any) => {
       this.students=res.student;
       console.log(res);
     }, (error) => {
@@ -26,7 +28,7 @@ export class HomePageComponent implements OnInit {
   }
   delete(id){
     console.log(id)
-    this.http.delete(`http://localhost:3000/student/delete/${id}`).subscribe((res: any) => {
+    this.studentServive.Delete(id).subscribe((res: any) => {
       alert(res.msg);
     }, (error) => {
 

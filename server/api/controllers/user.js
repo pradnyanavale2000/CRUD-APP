@@ -4,6 +4,21 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
 
+function verifyToken(req,res,next) {
+  if(!req.headers.authorization) {
+    return res.status(401).send('unauthorized req');
+  }
+  let token=req.headers.authorization.split(' ')[1]
+  if(token === null) {
+    return res.status(401).send('unauthorized req')
+  }
+  let payload = jwt.verify(token, 'secretKey')
+  if(!payload){
+    return res.status(401).send('unauthorized req');
+  }
+  req.userId=payload.subject
+  next()
+}
 exports.user_signup = async (req, res, next) => {
   
   const alreadyuser = await User.findOne({email: req.body.email});
@@ -25,7 +40,9 @@ exports.user_signup = async (req, res, next) => {
   });
 
   user.save().then((response) =>{
-    res.status(200).json({ msg: "Registration Successful" });
+    let payload= { subject: user._id}
+    let token= jwt.sign(payload, 'secretKey');
+    res.status(200).send({token});
   }).catch((error)=>{
     res.status(500).json({ msg: "Registration failed" });
   });
@@ -44,9 +61,9 @@ exports.user_login = async (req, res, next) => {
     });
   }
   else{
-    return res.status(201).json({
-      msg : "Login Successful"
-    });
+    let payload= { subject: user._id}
+    let token= jwt.sign(payload, 'secretKey');
+    return res.status(200).send({token});
   }
     
 };
@@ -74,6 +91,7 @@ exports.user_forget_password = async (req, res, next) => {
       });
     }   
 };
+ 
 
 exports.user_delete = (req, res, next) => {
   res.status(200).json({ msg: "user_delete works" })

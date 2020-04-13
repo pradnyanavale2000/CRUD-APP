@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-updatestudent',
@@ -25,7 +26,8 @@ export class UpdatestudentComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private studentServive: StudentService
      ) {}
 
   ngOnInit() {
@@ -98,7 +100,7 @@ export class UpdatestudentComponent implements OnInit {
     };
 
     console.log(data._id)
-    this.http.put('http://localhost:3000/student/update', data).subscribe((response: any) => {
+    this.studentServive.update(data).subscribe((response: any) => {
 
       console.log(response);
       alert(response.msg);
